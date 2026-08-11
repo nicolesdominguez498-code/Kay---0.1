@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kay 0.1</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5e9e5;
+      color: #3b2525;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 500px;
+      padding: 25px;
+      box-sizing: border-box;
+    }
+
+    .kay {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .avatar {
+      font-size: 70px;
+    }
+
+    h1 {
+      margin: 8px 0;
+    }
+
+    .status {
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    .chat {
+      background: white;
+      border-radius: 20px;
+      padding: 18px;
+      min-height: 300px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .message {
+      padding: 12px 15px;
+      border-radius: 15px;
+      margin-bottom: 10px;
+      max-width: 85%;
+    }
+
+    .kay-message {
+      background: #ead0c8;
+    }
+
+    .user-message {
+      background: #d8b09f;
+      margin-left: auto;
+    }
+
+    .input-area {
+      display: flex;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    input {
+      flex: 1;
+      padding: 13px;
+      border: none;
+      border-radius: 15px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    button {
+      border: none;
+      border-radius: 15px;
+      padding: 13px 18px;
+      cursor: pointer;
+      background: #8b3f4f;
+      color: white;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <div class="kay">
+      <div class="avatar">🤖</div>
+      <h1>Kay</h1>
+      <div class="status">Kay 0.1 • En línea</div>
+    </div>
+
+    <div class="chat" id="chat">
+      <div class="message kay-message">
+        Hola, Nick. 🧡 Soy Kay 0.1.
+      </div>
+    </div>
+
+    <div class="input-area">
+      <input
+        type="text"
+        id="messageInput"
+        placeholder="Escríbele a Kay..."
+      >
+
+      <button onclick="sendMessage()">Enviar</button>
+    </div>
+
+  </div>
+
+  <script>
+    function sendMessage() {
+
+      const input = document.getElementById("messageInput");
+      const chat = document.getElementById("chat");
+
+      const message = input.value.trim();
+
+      if (message === "") return;
+
+      const userMessage = document.createElement("div");
+      userMessage.className = "message user-message";
+      userMessage.textContent = message;
+
+      chat.appendChild(userMessage);
+
+      input.value = "";
+
+      const kayMessage = document.createElement("div");
+      kayMessage.className = "message kay-message";
+
+      kayMessage.textContent =
+        "Te escucho. 🧡 Este es mi primer prototipo, pero vamos a ir construyéndome juntos.";
+
+      chat.appendChild(kayMessage);
+
+      chat.scrollTop = chat.scrollHeight;
+    }
+  </script>
+
+</body>
+</html>
